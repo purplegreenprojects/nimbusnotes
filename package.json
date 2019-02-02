@@ -1,0 +1,18 @@
+{
+  "name": "nimbusnotes",
+  "version": "1.0.0",
+  "description": "nimbusnotes is a multiplayer raining sound experience",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"test\"",
+    "start": "node index.js"
+  },
+  "author": "Elizabeth Ford & James Mayr",
+  "license": "ISC",
+  "engines": {
+  	"node": "6.11.1"
+  },
+  "dependencies": {
+  	"websocket": "^1.0.25"
+  }
+}
