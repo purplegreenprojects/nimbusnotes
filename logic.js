@@ -95,8 +95,10 @@
 								<meta property="og:url" content="https://nimbusnotes.herokuapp.com"/>\
 								<meta property="og:description" content="nimbusnotes is a multiplayer raining sound experience."/>\
 								<meta property="og:image" content="https://nimbusnotes.herokuapp.com/logo.png"/>\
-								<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>'
+								'
 					break
+
+					// <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
 					default:
 						return null
