@@ -93,8 +93,8 @@ window.addEventListener("load", function() {
 				try {
 					if (socket) {
 						// coordinates
-							var x = event.touches ? event.touches[0].clientX : event.clientX
-							var y = event.touches ? event.touches[0].clientY : event.clientY
+							var x = (event.touches ? event.touches[0].clientX : event.clientX) * 200 / canvas.width
+							var y = (event.touches ? event.touches[0].clientY : event.clientY) * 200 / canvas.height
 
 						// socket
 							socket.send(JSON.stringify({
@@ -125,8 +125,8 @@ window.addEventListener("load", function() {
 
 					// clouds
 						for (i in clouds) {
-							var x = clouds[i].x
-							var y = clouds[i].y
+							var x = clouds[i].x * canvas.width / 100
+							var y = clouds[i].y * canvas.height / 100
 
 							drawCloud(x, y)
 							createDrop(clouds[i])
@@ -136,15 +136,15 @@ window.addEventListener("load", function() {
 
 		/* createDrop */
 			function createDrop(cloud) {
-				var sector = Math.floor(6 * (canvas.height - cloud.y) / canvas.height) + 1
+				var sector = Math.floor(6 * (canvas.height - (cloud.y * canvas.height / 100)) / canvas.height) + 1
 				if (counter % sector == 0) {
 					// create drop
 						var drop = {
 							id: generateRandom(),
-							x: cloud.x + (Math.floor(Math.random() * 200) - 100),
-							y: Math.max(125, Math.min(canvas.height - 100, cloud.y)),
+							x: (cloud.x * canvas.width / 100) + (Math.floor(Math.random() * 200) - 100),
+							y: Math.max(125, Math.min(canvas.height - 100, (cloud.y * canvas.height / 100))),
 							vy: 20,
-							frequency: frequencies[Math.floor(16 * cloud.x / canvas.width)]
+							frequency: frequencies[Math.floor(16 * (cloud.x * canvas.width / 100) / canvas.width)]
 						}
 
 					// add to drops object
@@ -169,8 +169,8 @@ window.addEventListener("load", function() {
 			resizeCanvas()
 			window.addEventListener("resize", resizeCanvas)
 			function resizeCanvas(){
-				canvas.height = window.innerHeight
-				canvas.width = window.innerWidth
+				canvas.height = window.innerHeight * 2
+				canvas.width = window.innerWidth * 2
 			}
 
 		/* draw triangle */
